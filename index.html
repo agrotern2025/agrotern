@@ -1,99 +1,320 @@
 <!DOCTYPE html>
 <html lang="uk">
 
-<head></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АгроТерн — насіння, добрива, засоби захисту</title>
+    <meta name="description"
+        content="AgroTern: перевірені рішення для домогосподарств і малих господарств — насіння, добрива, засоби захисту, покривні матеріали. Консультації агронома.">
+    <link rel="canonical" href="https://agrotern2025.github.io/agrotern/">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/png" href="/img/loader.png">
+
+    <!-- Локальні стилі слайдера (можна перенести в style.css) -->
+    <style>
+        .cat-slider {
+            position: relative;
+        }
+
+        .cat-slider__viewport {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: .5rem .75rem;
+        }
+
+        .cat-slider__track {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 85%;
+            gap: 1rem;
+        }
+
+        .cat-slide {
+            scroll-snap-align: start;
+        }
+
+        /* кнопки */
+        .cat-slider__nav {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .cat-slider__btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: auto;
+            border: 1px solid var(--muted);
+            background: #fff;
+            border-radius: 999px;
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+            cursor: pointer;
+        }
+
+        .cat-slider__btn[disabled] {
+            opacity: .4;
+            cursor: default;
+        }
+
+        .cat-slider__btn--prev {
+            left: .25rem;
+        }
+
+        .cat-slider__btn--next {
+            right: .25rem;
+        }
+
+        /* ширші екрани показують більше карток */
+        @media (min-width: 576px) {
+            .cat-slider__track {
+                grid-auto-columns: 60%;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .cat-slider__track {
+                grid-auto-columns: 45%;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .cat-slider__track {
+                grid-auto-columns: 32%;
+            }
+        }
+
+        @media (min-width:1200px) {
+            .cat-slider__track {
+                grid-auto-columns: 24%;
+            }
+        }
+    </style>
+</head>
 
 <body>
     <div id="header"></div>
 
-    <main>
-        <img src="/agrotern/img/banner.png" alt="Головне зображення AgroTern" class="featured-image">
-        <section class="hero">
-            <h2>Професійні рішення від аграріїв</h2>
+    <main id="main-content">
+        <figure class="hero">
+            <img class="featured-image" src="/img/banner.png" srcset="/img/banner.png 1200w, /img/banner.png 2400w"
+                sizes="100vw" alt="Сезонні пропозиції для домогосподарств і фермерів" width="1200" height="500"
+                decoding="async" fetchpriority="high">
+            <figcaption class="visually-hidden">Підбір рішень під вашу ділянку та культури</figcaption>
+        </figure>
+
+        <section aria-labelledby="title">
+            <h1 id="title">Професійні рішення від аграріїв</h1>
             <p>
                 Насіння, добрива та засоби захисту рослин — увесь запропонований асортимент застосовується великими
-                українськими агрохолдингами, такими як <b>Контінентал Фармерз Груп, Бучачагрохлібпром, Західний Буг,
-                Ерідон, Агро-Експрес-Сервіс</b> та іншими. Ці компанії використовують продукцію, аналогічну нашій, у
-                своїй щоденній діяльності, що підтверджено відкритими джерелами та звітами компаній.<br>Ми пропонуємо
-                індивідуальний підбір рішень для маленьких домогосподарств, забезпечуючи якість, перевірену на практиці.
+                українськими агрохолдингами, такими як Контінентал Фармерз Груп, Бучачагрохлібпром, Західний Буг,
+                Ерідон,
+                Агро-Експрес-Сервіс та іншими. Ці компанії використовують продукцію, аналогічну нашій, у своїй щоденній
+                діяльності, що підтверджено відкритими джерелами та звітами компаній.<br>
+                Ми пропонуємо індивідуальний підбір рішень для маленьких домогосподарств, забезпечуючи якість,
+                перевірену на практиці.
             </p>
-            <div class="cta">
-                <a href="/agrotern/page/products.html"><button>Каталог продукції</button></a>
-                <a href="/agrotern/page/contact.html"><button>Приватна консультація</button></a>
+            <div class="cta" role="region" aria-label="Швидкі дії">
+                <a class="btn" href="/page/products.html">Каталог продукції</a>
+                <a class="btn btn--secondary" href="/page/contact.html">Приватна консультація</a>
             </div>
         </section>
 
-        <section>
-            <h2>Хто ми такі</h2>
-            <p>
-                Ми — онлайн магазин, який не просто продає, а допомагає. Працюємо з господарствами й дачниками, щоб
-                надати перевірене насіння, ефективну агрохімію та індивідуальні рішення для вирощування культур.
-            </p>
-            <p>
-                Наша команда орієнтована на довгострокові відносини з клієнтами,
-                засновані на якості, консультаціях та сервісі.
-            </p>
-        </section>
+        <section aria-labelledby="cats">
+            <h2 id="cats">Основні категорії товарів</h2>
 
-        <section>
-            <h2>Основні категорії товарів</h2>
-            <div class="category-grid">
-                <figure class="category-item">
-                    <h2>Насіння</h2>
-                    <img src="/agrotern/img/seeds.png" alt="">
-                    <figcaption>Високоврожайні сорти для різного типу ґрунту</figcaption>
-                </figure>
-                <figure class="category-item">
-                    <h2>Добрива</h2>
-                    <img src="/agrotern/img/d.png" alt="">
-                    <figcaption>Мінеральні, органічні та мікродобрива</figcaption>
-                </figure>
-                <figure class="category-item">
-                    <h2>Засоби захисту</h2>
-                    <img src="/agrotern/img/saves.png" alt="">
-                    <figcaption>Гербіциди, фунгіциди, інсектициди</figcaption>
-                </figure>
-                <figure class="category-item">
-                    <h2>Покривні матеріали</h2>
-                    <img src="/agrotern/img/material.png" alt="">
-                    <figcaption>Агроволокно, плівка, агротканина</figcaption>
-                </figure>
+            <!-- Слайдер категорій -->
+            <div class="cat-slider" role="region" aria-label="Категорії">
+                <div class="cat-slider__viewport" id="catsViewport" tabindex="0" aria-roledescription="carousel">
+                    <div class="cat-slider__track" id="catsTrack">
+                        <!-- 1 -->
+                        <a class="cat-slide" href="/page/products.html?cat=seeds"
+                            aria-label="Перейти до категорії Насіння">
+                            <figure class="category-item">
+                                <img src="/img/seeds.png" alt="Насіння овочевих і польових культур" loading="lazy"
+                                    decoding="async" width="320" height="200">
+                                <h3>Насіння</h3>
+                                <figcaption>
+                                    <p>Високоврожайні сорти та гібриди</p>
+                                </figcaption>
+                            </figure>
+                        </a>
+                        <!-- 2 -->
+                        <a class="cat-slide" href="/page/products.html?cat=fert"
+                            aria-label="Перейти до категорії Добрива">
+                            <figure class="category-item">
+                                <img src="/img/d.png" alt="Добрива мінеральні, органічні та мікроелементи"
+                                    loading="lazy" decoding="async" width="320" height="200">
+                                <h3>Добрива</h3>
+                                <figcaption>
+                                    <p>Під фази розвитку культури</p>
+                                </figcaption>
+                            </figure>
+                        </a>
+                        <!-- 3 -->
+                        <a class="cat-slide" href="/page/products.html?cat=protect"
+                            aria-label="Перейти до категорії Засоби захисту">
+                            <figure class="category-item">
+                                <img src="/img/saves.png" alt="Засоби захисту рослин" loading="lazy" decoding="async"
+                                    width="320" height="200">
+                                <h3>Засоби захисту</h3>
+                                <figcaption>
+                                    <p>Гербіциди, фунгіциди, інсектициди</p>
+                                </figcaption>
+                            </figure>
+                        </a>
+                        <!-- 4 -->
+                        <a class="cat-slide" href="/page/products.html?cat=covers"
+                            aria-label="Перейти до категорії Покривні матеріали">
+                            <figure class="category-item">
+                                <img src="/img/material.png" alt="Покривні матеріали для грядок і теплиць"
+                                    loading="lazy" decoding="async" width="320" height="200">
+                                <h3>Покривні матеріали</h3>
+                                <figcaption>
+                                    <p>Агроволокно, плівка, агротканина</p>
+                                </figcaption>
+                            </figure>
+                        </a>
+                        <!-- 5 -->
+                        <a class="cat-slide" href="/page/products.html?cat=seedlings"
+                            aria-label="Перейти до категорії Саджанці">
+                            <figure class="category-item">
+                                <img src="/img/material.png" alt="Саджанці плодових і ягідних культур" loading="lazy"
+                                    decoding="async" width="320" height="200">
+                                <h3>Саджанці</h3>
+                                <figcaption>
+                                    <p>Добірні сорти з гарною приживлюваністю</p>
+                                </figcaption>
+                            </figure>
+                        </a>
+                        <!-- 6 -->
+                        <a class="cat-slide" href="/page/products.html?cat=bulbs"
+                            aria-label="Перейти до категорії Цибулькові квіти">
+                            <figure class="category-item">
+                                <img src="/img/material.png" alt="Цибулькові квіти для клумб" loading="lazy"
+                                    decoding="async" width="320" height="200">
+                                <h3>Цибулькові квіти</h3>
+                                <figcaption>
+                                    <p>Тюльпани, лілії, гладіолуси</p>
+                                </figcaption>
+                            </figure>
+                        </a>
+                        <!-- 7 -->
+                        <a class="cat-slide" href="/page/products.html?cat=onionsets"
+                            aria-label="Перейти до категорії Цибуля-сівок">
+                            <figure class="category-item">
+                                <img src="/img/material.png" alt="Цибуля-сівок" loading="lazy" decoding="async"
+                                    width="320" height="200">
+                                <h3>Цибуля-сівок</h3>
+                                <figcaption>
+                                    <p>Ранні та середні строки достигання</p>
+                                </figcaption>
+                            </figure>
+                        </a>
+                        <!-- 8 -->
+                        <a class="cat-slide" href="/page/products.html?cat=myc"
+                            aria-label="Перейти до категорії Міцелій грибів">
+                            <figure class="category-item">
+                                <img src="/img/material.png" alt="Міцелій грибів для вирощування" loading="lazy"
+                                    decoding="async" width="320" height="200">
+                                <h3>Міцелій грибів</h3>
+                                <figcaption>
+                                    <p>Вешенка, шиітаке та інші</p>
+                                </figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="cat-slider__nav" aria-hidden="true">
+                    <button class="cat-slider__btn cat-slider__btn--prev" type="button" id="catsPrev"
+                        aria-label="Попередня категорія">‹</button>
+                    <button class="cat-slider__btn cat-slider__btn--next" type="button" id="catsNext"
+                        aria-label="Наступна категорія">›</button>
+                </div>
             </div>
         </section>
 
-        <section>
-            <h2>Чому обирають нас</h2>
-            <ul>
-                <li>🔍 Індивідуальний підбір</li>
-                <li>📞 Безкоштовні консультації клієнтам</li>
-                <li>🚚 Швидка доставка</li>
-                <li>🧾 Доступні ціни</li>
+        <section aria-labelledby="why">
+            <h2 id="why">Чому обирають нас</h2>
+            <ul class="benefits">
+                <li>Індивідуальний підбір під умови ділянки</li>
+                <li>Консультації перед і після покупки</li>
+                <li>Швидка доставка по Україні</li>
+                <li>Прозорі ціни без прихованих націнок</li>
             </ul>
         </section>
 
-        <!-- <section>
-            <h2>Відгуки клієнтів</h2>
-            <div class="review">“Замовляли насіння капусти — підібрали під нашу ділянку, все зійшло! Тепер тільки до
-                них.” — Олександр, фермер, Тернопільський р-н</div>
-            <div class="review">“У порівнянні з базаром — ціни ті самі, але якість на голову вище.” — Марія, дачниця з
-                Підволочиська</div>
-        </section> -->
-
-        <section class="cta">
-            <h2>Потрібна допомога з підбором?</h2>
-            <p>Напишіть нам — і ми допоможемо підібрати рішення саме під вашу потребу.</p>
-            <a href="viber://chat?number=%2B380680464402" rel="noopener">
-                <button>Зв’язатись у Viber</button>
-            </a>
-            <a href="https://t.me/agrotern2025" target="_blank" rel="noopener">
-                <button>Зв’язатись у Telegram</button>
-            </a>
+        <section class="cta" aria-labelledby="help">
+            <h2 id="help">Потрібна допомога з підбором?</h2>
+            <p>Напишіть — підберемо рішення під вашу культуру та бюджет.</p>
+            <a class="btn" href="viber://chat?number=%2B380680464402">Viber</a>
+            <a class="btn btn--secondary" href="https://t.me/agrotern2025" target="_blank"
+                rel="noopener noreferrer">Telegram</a>
         </section>
     </main>
 
     <div id="footer"></div>
 
-    <script src="/agrotern/js/script.js"></script>
+    <script defer src="/js/script.js"></script>
+
+    <!-- Нативний JS для слайдера -->
+    <script>
+        (function () {
+            const vp = document.getElementById('catsViewport');
+            const prev = document.getElementById('catsPrev');
+            const next = document.getElementById('catsNext');
+
+            if (!vp || !prev || !next) return;
+
+            const scrollByPage = (dir) => {
+                const step = vp.clientWidth * 0.95; // майже ширина вікна
+                vp.scrollBy({ left: dir * step, behavior: 'smooth' });
+            };
+
+            function updateButtons() {
+                // невеликий допуск
+                const atStart = vp.scrollLeft <= 2;
+                const atEnd = vp.scrollLeft + vp.clientWidth >= vp.scrollWidth - 2;
+                prev.disabled = atStart;
+                next.disabled = atEnd;
+            }
+
+            prev.addEventListener('click', () => scrollByPage(-1));
+            next.addEventListener('click', () => scrollByPage(1));
+            vp.addEventListener('scroll', updateButtons, { passive: true });
+            window.addEventListener('resize', updateButtons);
+
+            // Клавіші ← →
+            vp.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') { e.preventDefault(); scrollByPage(1); }
+                if (e.key === 'ArrowLeft') { e.preventDefault(); scrollByPage(-1); }
+            });
+
+            // стартовий стан
+            updateButtons();
+        })();
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context":"https://schema.org",
+        "@type":"Store",
+        "name":"AgroTern",
+        "url":"https://agrotern2025.github.io/agrotern/",
+        "logo":"https://agrotern2025.github.io/agrotern/img/logo.svg",
+        "image":"https://agrotern2025.github.io/agrotern/img/banner_og.jpg",
+        "sameAs":["https://t.me/agrotern2025","https://www.instagram.com/agro.tern2025"],
+        "contactPoint":{"@type":"ContactPoint","contactType":"customer support","telephone":"+380680464402","email":"agrotern2025@gmail.com"},
+        "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"18:00"}]
+    }
+    </script>
 </body>
 
 </html>
