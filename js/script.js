@@ -57,7 +57,7 @@ function markActiveNav(scope = document) {
     const p = location.pathname.replace(/\/+$/, '');
     scope.querySelectorAll('header a[href]').forEach(a => {
         const href = a.getAttribute('href').replace(/\/+$/, '');
-        if (href && href !== '/' && p.endsWith(href)) {
+        if (href && href !== '/agrotern/' && p.endsWith(href)) {
             a.setAttribute('aria-current', 'page');
             const li = a.closest('li');
             if (li) li.classList.add('is-active');
@@ -138,10 +138,10 @@ function updateCartBadge() {
 // ===================== Ініціалізація =====================
 (async function init() {
     // head
-    await loadTemplate('/template/head.html', 'head', { mode: 'append', dedupe: true });
+    await loadTemplate('/agrotern/template/head.html', 'head', { mode: 'append', dedupe: true });
 
     // header
-    await loadTemplate('/template/header.html', '#header');
+    await loadTemplate('/agrotern/template/header.html', '#header');
     const headerHost = document.getElementById('header');
     if (headerHost) {
         initMobileMenu(headerHost);     // важливо: після інʼєкції
@@ -151,7 +151,7 @@ function updateCartBadge() {
     }
 
     // footer
-    await loadTemplate('/template/footer.html', '#footer');
+    await loadTemplate('/agrotern/template/footer.html', '#footer');
     setYear();
 
     // інше
@@ -162,3 +162,4 @@ function updateCartBadge() {
 // Синхронізація бейджа між вкладками/сторінками
 window.addEventListener('storage', (e) => { if (e.key === CART_KEY) updateCartBadge(); });
 document.addEventListener('cart:changed', updateCartBadge);
+
