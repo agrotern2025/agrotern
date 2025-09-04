@@ -91,7 +91,7 @@
         const payload = encodeURIComponent(JSON.stringify(data));
         return `
       <article class="product-card">
-        <img class="product-media" src="/agrotern${data.image}" alt="${data.title || 'Товар'}"
+        <img class="product-media" a src="/agrotern${data.image}" alt="${data.title || 'Товар'}"
              loading="lazy" decoding="async" width="${data.width}" height="${data.height}">
         <div class="product-body">
           <div class="badge-row">
