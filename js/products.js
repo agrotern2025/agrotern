@@ -1,5 +1,5 @@
 (function () {
-    const DATA_URL = '/data/products.json';
+    const DATA_URL = '/agrotern/data/products.json';
     const ALL_PER_CAT = 2;
     const PAGE_SIZE = 12;
 
@@ -83,7 +83,7 @@
             brand: item.brand || '',
             title: item.title,
             price: item.price ?? null,
-            image: item.image || '/img/placeholder.png',
+            image: item.image || '/agrotern/img/placeholder.png',
             desc: item.desc || '',
             width: item.width || 320,
             height: item.height || 240
@@ -129,7 +129,7 @@
     function openModal(item) {
         if (!modalEl) return; // якщо блоку немає — нічого не робимо
         currentItem = item;
-        pmImg.src = item.image || '/img/placeholder.png';
+        pmImg.src = item.image || '/agrotern/img/placeholder.png';
         pmImg.alt = item.title || 'Товар';
         pmTitle.textContent = item.title || 'Товар';
         pmDesc.textContent = item.longDesc || item.desc || '';
