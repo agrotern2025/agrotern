@@ -1,10 +1,30 @@
-<header class="site-header">
-    <div class="logo-container">
-        <a href="/agrotern/"><img src="/agrotern/img/logo2.png" alt="AgroTern logo"></a>
-    </div>
-    <ul>
-        <li class="hover-block"><a href="/agrotern/page/products.html">Товари</a></li>
-        <li class="hover-block"><a href="/agrotern/page/about.html">Про нас</a></li>
-        <li class="hover-block"><a href="/agrotern/page/contact.html">Контакти</a></li>
-    <ul>
+<header class="site-header" role="banner">
+    <nav class="site-nav" aria-label="Головна навігація">
+        <div class="logo-container">
+            <a href="/" aria-label="AgroTern — на головну">
+                <img src="/img/logo2.png" alt="AgroTern логотип" width="160" height="48" decoding="async"
+                    fetchpriority="high">
+            </a>
+        </div>
+
+        <!-- Кнопка бургер (мобільна) -->
+        <button class="menu-toggle" aria-label="Меню" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <ul id="main-menu">
+            <li class="hover-block"><a href="/page/products.html">Товари</a></li>
+            <li class="hover-block"><a href="/page/about.html">Про нас</a></li>
+            <li class="hover-block"><a href="/page/contact.html">Контакти</a></li>
+        </ul>
+
+        <!-- Кошик -->
+        <a class="cart-btn" href="/page/cart.html" aria-label="Кошик">
+            <svg class="cart-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 .001 3.999A2 2 0 0 0 17 18ZM6.3 6l.4 2H20a1 1 0 0 1 .98 1.197l-1.2 6A2 2 0 0 1 17.82 16H9.18a2 2 0 0 1-1.96-1.603L5.1 5H3a1 1 0 1 1 0-2h3a1 1 0 0 1 .98.804L7.3 6Z" />
+            </svg>
+            <span class="cart-count" id="cart-count">0</span>
+        </a>
+    </nav>
 </header>
