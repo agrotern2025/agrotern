@@ -1,303 +1,45 @@
 <!DOCTYPE html>
 <html lang="uk">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кошик — АгроТерн</title>
-    <link rel="stylesheet" href="/agrotern/style.css">
-    <link rel="icon" type="image/png" href="/agrotern/img/loader.png">
-    <style>
-        /* Локальні стилі кошика (mobile-first) */
-        .cart-wrap {
-            padding: .75rem
-        }
-
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: .5rem;
-            margin-bottom: .75rem
-        }
-
-        .cart-empty {
-            padding: 1rem;
-            text-align: center;
-            color: #555
-        }
-
-        .cart-items {
-            display: grid;
-            gap: .75rem
-        }
-
-        .cart-item {
-            display: grid;
-            grid-template-columns: 72px 1fr;
-            gap: .75rem;
-            align-items: center;
-            border: 1px solid var(--muted);
-            border-radius: 10px;
-            background: #fff;
-            padding: .5rem
-        }
-
-        .cart-img {
-            width: 72px;
-            height: 72px;
-            object-fit: cover;
-            border-radius: 8px
-        }
-
-        .ci-title {
-            font-weight: 600;
-            margin: 0 0 .25rem 0
-        }
-
-        .ci-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: .5rem;
-            align-items: center
-        }
-
-        .price {
-            font-weight: 700
-        }
-
-        .ci-qty {
-            display: flex;
-            align-items: center;
-            gap: .4rem
-        }
-
-        .ci-qty input {
-            width: 72px;
-            padding: .35rem .5rem;
-            border: 1px solid var(--muted);
-            border-radius: 8px
-        }
-
-        .ci-actions {
-            margin-left: auto;
-            display: flex;
-            gap: .5rem
-        }
-
-        .subtotal {
-            margin-left: auto;
-            font-weight: 700
-        }
-
-        .cart-summary {
-            margin-top: 1rem;
-            border-top: 1px solid var(--muted);
-            padding-top: .75rem;
-            display: grid;
-            gap: .5rem
-        }
-
-        .sum-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center
-        }
-
-        .sum-total {
-            font-size: 1.1rem;
-            font-weight: 700
-        }
-
-        @media(min-width:768px) {
-            .cart-wrap {
-                padding: 1rem
-            }
-
-            .cart-item {
-                grid-template-columns: 96px 1fr auto
-            }
-
-            .cart-img {
-                width: 96px;
-                height: 96px
-            }
-
-            .ci-qty input {
-                width: 84px
-            }
-        }
-
-        .btn-danger {
-            background: #dc3545
-        }
-
-        .btn-danger:hover,
-        .btn-danger:focus-visible {
-            background: #b02a37
-        }
-
-        .badge {
-            display: inline-block;
-            background: #e8f6ee;
-            color: var(--brand);
-            border: 1px solid var(--brand);
-            border-radius: 999px;
-            padding: .15rem .5rem;
-            font-size: .8rem
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Кошик — АгроТерн</title>
+  <meta name="description" content="Кошик AgroTern: перегляньте вибрані товари, змініть кількість, видаліть позиції та оформіть запит." />
+  <link rel="stylesheet" href="/agrotern/style.css" />
+  <link rel="stylesheet" href="/agrotern/css/cart.css" />
+  <link rel="icon" type="image/png" href="/agrotern/img/loader.png" />
 </head>
-
 <body>
-    <div id="header"></div>
+  <div id="header"></div>
 
-    <main class="cart-wrap">
-        <div class="cart-header">
-            <h1>Кошик</h1>
-            <div><a class="btn btn--secondary" href="/agrotern/page/products.html">До товарів</a></div>
-        </div>
+  <main class="cart-wrap" aria-labelledby="cart-title">
+    <div class="cart-header">
+      <h1 id="cart-title">Кошик</h1>
+      <div><a class="btn btn--secondary" href="/agrotern/page/products.html">До товарів</a></div>
+    </div>
 
-        <div id="cart-empty" class="cart-empty" hidden>
-            Кошик порожній. <a class="btn btn--secondary" href="/agrotern/page/products.html" style="margin-left:.5rem">Обрати
-                товари</a>
-        </div>
+    <div id="cart-empty" class="cart-empty" hidden aria-live="polite" role="status">
+      Кошик порожній.
+      <a class="btn btn--secondary" href="/agrotern/page/products.html" style="margin-left:.5rem">Обрати товари</a>
+    </div>
 
-        <section id="cart-items" class="cart-items" aria-label="Товари у кошику"></section>
+    <section id="cart-items" class="cart-items" aria-label="Товари у кошику" aria-live="polite"></section>
 
-        <aside id="cart-summary" class="cart-summary" hidden>
-            <div class="sum-row"><span>Кількість позицій</span><span id="sum-count">0</span></div>
-            <div class="sum-row"><span>Сума</span><span id="sum-total" class="sum-total">0</span></div>
-            <div class="sum-row" style="margin-top:.5rem;gap:.5rem;flex-wrap:wrap">
-                <button id="btn-clear" class="btn btn-danger" type="button">Очистити кошик</button>
-                <a class="btn" href="/agrotern/page/contact.html">Оформити запит</a>
-            </div>
-            <p style="color:#555;margin:0">* Ціни попередні. Підтверджуються менеджером.</p>
-        </aside>
-    </main>
+    <aside id="cart-summary" class="cart-summary" hidden aria-live="polite">
+      <div class="sum-row"><span>Кількість позицій</span><span id="sum-count">0</span></div>
+      <div class="sum-row"><span>Сума</span><span id="sum-total" class="sum-total">0</span></div>
+      <div class="sum-row" style="margin-top:.5rem;gap:.5rem;flex-wrap:wrap">
+        <button id="btn-clear" class="btn btn-danger" type="button">Очистити кошик</button>
+        <a class="btn" href="/agrotern/page/contact.html">Оформити запит</a>
+      </div>
+      <p style="color:#555;margin:0">* Ціни попередні. Підтверджуються менеджером.</p>
+    </aside>
+  </main>
 
-    <div id="footer"></div>
+  <div id="footer"></div>
 
-    <script src="/agrotern/js/script.js"></script>
-    <script>
-        (function () {
-            const CART_KEY = 'agro_cart_v1';
-            const listEl = document.getElementById('cart-items');
-            const emptyEl = document.getElementById('cart-empty');
-            const sumBox = document.getElementById('cart-summary');
-            const sumCnt = document.getElementById('sum-count');
-            const sumTot = document.getElementById('sum-total');
-            const btnClr = document.getElementById('btn-clear');
-
-            function money(v) {
-                if (v == null || isNaN(v)) return '—';
-                return new Intl.NumberFormat('uk-UA', { style: 'currency', currency: 'UAH', maximumFractionDigits: 0 }).format(v);
-            }
-            function readCart() {
-                try { return JSON.parse(localStorage.getItem(CART_KEY) || '[]') } catch { return [] }
-            }
-            function writeCart(arr) {
-                localStorage.setItem(CART_KEY, JSON.stringify(arr));
-                document.dispatchEvent(new Event('cart:changed'));
-            }
-            function removeAt(idx) {
-                const c = readCart();
-                c.splice(idx, 1);
-                writeCart(c);
-                render();
-            }
-            function setQty(idx, qty) {
-                const q = Math.max(1, Math.min(999, Number(qty) || 1));
-                const c = readCart();
-                if (!c[idx]) return;
-                c[idx].qty = q;
-                writeCart(c);
-                render();
-            }
-
-            function itemRowHTML(item, idx) {
-                const title = item.title || 'Товар';
-                const img = item.image || '/img/placeholder.png';
-                const cat = item.category ? `<span class="badge">${labelCat(item.category)}</span>` : '';
-                const price = item.price != null ? money(item.price) : 'за запитом';
-                const qty = item.qty || 1;
-                const subtotal = item.price != null ? money(qty * item.price) : '—';
-                return `
-          <article class="cart-item" data-index="${idx}">
-            <img class="cart-img" src="${img}" alt="${title}" loading="lazy" decoding="async" width="96" height="96">
-            <div>
-              <h3 class="ci-title">${title}</h3>
-              <div class="ci-meta">
-                ${cat}
-                <span class="price">${price}</span>
-                <div class="ci-qty">
-                  <label for="qty-${idx}" class="visually-hidden">Кількість</label>
-                  <input id="qty-${idx}" class="qty" type="number" inputmode="numeric" min="1" max="999" value="${qty}">
-                </div>
-                <span class="subtotal">${subtotal}</span>
-                <div class="ci-actions">
-                  <button class="btn btn--secondary remove" type="button">Видалити</button>
-                </div>
-              </div>
-            </div>
-          </article>`;
-            }
-            function labelCat(k) {
-                const m = { seeds: 'Насіння', fert: 'Добрива', protect: 'Захист', covers: 'Покривні', seedlings: 'Саджанці', bulbs: 'Цибулькові', onionsets: 'Цибуля-сівок', myc: 'Міцелій' };
-                return m[k] || k;
-            }
-
-            function render() {
-                const cart = readCart();
-                if (!cart.length) {
-                    listEl.innerHTML = '';
-                    emptyEl.hidden = false;
-                    sumBox.hidden = true;
-                    return;
-                }
-                emptyEl.hidden = true;
-                sumBox.hidden = false;
-
-                // рендер позицій
-                listEl.innerHTML = cart.map(itemRowHTML).join('');
-
-                // підрахунок сум
-                const count = cart.reduce((s, it) => s + (it.qty || 1), 0);
-                const total = cart.reduce((s, it) => s + ((it.price != null ? it.price : 0) * (it.qty || 1)), 0);
-
-                sumCnt.textContent = String(count);
-                sumTot.textContent = money(total);
-            }
-
-            // Делегування подій
-            listEl.addEventListener('input', (e) => {
-                const qtyInput = e.target.closest('input.qty');
-                if (!qtyInput) return;
-                const itemEl = e.target.closest('.cart-item');
-                const idx = Number(itemEl?.dataset.index);
-                setQty(idx, qtyInput.value);
-            });
-            listEl.addEventListener('click', (e) => {
-                if (e.target.closest('.remove')) {
-                    const itemEl = e.target.closest('.cart-item');
-                    const idx = Number(itemEl?.dataset.index);
-                    removeAt(idx);
-                }
-            });
-            btnClr.addEventListener('click', () => {
-                if (confirm('Очистити весь кошик?')) {
-                    writeCart([]);
-                    render();
-                }
-            });
-
-            // синхронізація між вкладками
-            window.addEventListener('storage', (e) => { if (e.key === 'agro_cart_v1') render(); });
-
-            // старт
-            render();
-        })();
-    </script>
+  <script defer src="/agrotern/js/script.js"></script>
+  <script defer src="/agrotern/js/cart.js"></script>
+  <noscript>Для роботи кошика увімкніть JavaScript.</noscript>
 </body>
-
 </html>

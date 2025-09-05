@@ -1,196 +1,201 @@
 <!DOCTYPE html>
 <html lang="uk">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>АгроТерн — Категорії товарів</title>
-    <link rel="stylesheet" href="/agrotern/style.css">
-    <link rel="stylesheet" href="/agrotern/css/products.css">
-    <link rel="icon" type="image/png" href="/agrotern/img/loader.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>АгроТерн — Категорії товарів</title>
+  <link rel="stylesheet" href="/agrotern/style.css" />
+  <link rel="stylesheet" href="/agrotern/css/products.css" />
+  <link rel="icon" type="image/png" href="/agrotern/img/loader.png" />
 </head>
-
 <body>
-    <div id="header"></div>
+  <div id="header"></div>
 
-    <main>
-        <section aria-labelledby="cats-title">
-            <h2 id="cats-title">Основні категорії товарів</h2>
+  <main>
+    <section aria-labelledby="cats-title">
+      <h2 id="cats-title">Основні категорії товарів</h2>
 
-            <!-- Mobile-first селект категорій -->
-            <label class="tabs-select-wrap">
-                <span class="visually-hidden">Вибір категорії</span>
-                <select id="tabs-select" aria-label="Категорії">
-                    <option value="all" selected>Усе</option>
-                    <option value="seeds">Насіння</option>
-                    <option value="fert">Добрива</option>
-                    <option value="protect">Захист</option>
-                    <option value="covers">Покривні</option>
-                    <option value="seedlings">Саджанці</option>
-                    <option value="bulbs">Цибулькові</option>
-                    <option value="onionsets">Цибуля-сівок</option>
-                    <option value="myc">Міцелій</option>
-                </select>
-            </label>
+      <!-- Mobile-first селект категорій -->
+      <label class="tabs-select-wrap">
+        <span class="visually-hidden">Вибір категорії</span>
+        <select id="tabs-select" aria-label="Категорії">
+          <option value="all" selected>Усе</option>
+          <option value="seeds">Насіння</option>
+          <option value="fert">Добрива</option>
+          <option value="protect">Захист</option>
+          <option value="covers">Покривні</option>
+          <option value="seedlings">Саджанці</option>
+          <option value="bulbs">Цибулькові</option>
+          <option value="onionsets">Цибуля-сівок</option>
+          <option value="myc">Міцелій</option>
+        </select>
+      </label>
 
-            <!-- Десктопні вкладки (з 768px) -->
-            <div class="tabs" role="tablist" aria-label="Категорії">
-                <button class="tab-btn" role="tab" aria-selected="true" aria-controls="tab-all" id="tabbtn-all">
-                    <img src="/agrotern/img/material.png" alt="" loading="lazy" decoding="async"><span>Усе</span>
-                </button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-seeds" id="tabbtn-seeds">
-                    <img src="/agrotern/img/seeds.png" alt="" loading="lazy" decoding="async"><span>Насіння</span>
-                </button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-fert" id="tabbtn-fert">
-                    <img src="/agrotern/img/d.png" alt="" loading="lazy" decoding="async"><span>Добрива</span>
-                </button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-protect"
-                    id="tabbtn-protect">
-                    <img src="/agrotern/img/saves.png" alt="" loading="lazy" decoding="async"><span>Захист</span>
-                </button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-covers" id="tabbtn-covers">
-                    <img src="/agrotern/img/material.png" alt="" loading="lazy" decoding="async"><span>Покривні</span>
-                </button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-seedlings"
-                    id="tabbtn-seedlings">
-                    <img src="/agrotern/img/material.png" alt="" loading="lazy" decoding="async"><span>Саджанці</span>
-                </button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-bulbs" id="tabbtn-bulbs">
-                    <img src="/agrotern/img/material.png" alt="" loading="lazy" decoding="async"><span>Цибулькові</span>
-                </button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-onionsets"
-                    id="tabbtn-onionsets">
-                    <img src="/agrotern/img/material.png" alt="" loading="lazy" decoding="async"><span>Цибуля-сівок</span>
-                </button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-myc" id="tabbtn-myc">
-                    <img src="/agrotern/img/material.png" alt="" loading="lazy" decoding="async"><span>Міцелій</span>
-                </button>
-            </div>
+      <!-- Десктопні вкладки (з 768px) -->
+      <div class="tabs" role="tablist" aria-label="Категорії">
+        <button class="tab-btn" role="tab" aria-selected="true" aria-controls="tab-all" id="tabbtn-all">
+          <img src="/agrotern/img/material.png" alt="" loading="lazy" decoding="async" /><span>Усе</span>
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-seeds" id="tabbtn-seeds">
+          <img src="/agrotern/img/seeds.png" alt="" loading="lazy" decoding="async" /><span>Насіння</span>
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-fert" id="tabbtn-fert">
+          <img src="/agrotern/img/d.png" alt="" loading="lazy" decoding="async" /><span>Добрива</span>
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-protect" id="tabbtn-protect">
+          <img src="/agrotern/img/saves.png" alt="" loading="lazy" decoding="async" /><span>Захист</span>
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-covers" id="tabbtn-covers">
+          <img src="/agrotern/img/material.png" alt="" loading="lazy" decoding="async" /><span>Покривні</span>
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-seedlings" id="tabbtn-seedlings">
+          <img src="/agrotern/img/material.png" alt="" loading="lazy" decoding="async" /><span>Саджанці</span>
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-bulbs" id="tabbtn-bulbs">
+          <img src="/agrotern/img/material.png" alt="" loading="lazy" decoding="async" /><span>Цибулькові</span>
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-onionsets" id="tabbtn-onionsets">
+          <img src="/agrotern/img/material.png" alt="" loading="lazy" decoding="async" /><span>Цибуля-сівок</span>
+        </button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-myc" id="tabbtn-myc">
+          <img src="/agrotern/img/material.png" alt="" loading="lazy" decoding="async" /><span>Міцелій</span>
+        </button>
+      </div>
 
-            <!-- ПІДКАТЕГОРІЇ: селект (мобільний) + чіпи (десктоп) -->
-            <div id="subfilters" class="subfilters" hidden>
-                <label class="subtabs-select-wrap">
-                    <span class="visually-hidden">Підкатегорія</span>
-                    <select id="subtabs-select" aria-label="Підкатегорії"></select>
-                </label>
-                <div class="subtabs" role="tablist" aria-label="Підкатегорії"></div>
-            </div>
+      <!-- ПІДКАТЕГОРІЇ -->
+      <div id="subfilters" class="subfilters" hidden>
+        <label class="subtabs-select-wrap">
+          <span class="visually-hidden">Підкатегорія</span>
+          <select id="subtabs-select" aria-label="Підкатегорії"></select>
+        </label>
+        <div class="subtabs" role="tablist" aria-label="Підкатегорії"></div>
+      </div>
 
-            <!-- БРЕНДИ: селект (мобільний) + чіпи (десктоп) -->
-            <div id="brandfilters" class="brandfilters" hidden>
-                <label class="brands-select-wrap">
-                    <span class="visually-hidden">Виробник</span>
-                    <select id="brands-select" aria-label="Виробники"></select>
-                </label>
-                <div class="brand-chips" role="list" aria-label="Виробники"></div>
-            </div>
+      <!-- БРЕНДИ -->
+      <div id="brandfilters" class="brandfilters" hidden>
+        <label class="brands-select-wrap">
+          <span class="visually-hidden">Виробник</span>
+          <select id="brands-select" aria-label="Виробники"></select>
+        </label>
+        <div class="brand-chips" role="list" aria-label="Виробники"></div>
+      </div>
 
-            <!-- Панелі контенту -->
-            <section class="tab-panel" id="tab-all" role="tabpanel" aria-labelledby="tabbtn-all">
-                <div class="panel-info">
-                    <h3>Усі категорії</h3>
-                    <p>Показуємо по 2 позиції з кожної категорії.</p>
-                </div>
-                <div class="products-grid" data-category="all"></div>
-            </section>
-
-            <section class="tab-panel" id="tab-seeds" role="tabpanel" aria-labelledby="tabbtn-seeds" hidden>
-                <div class="panel-info">
-                    <h3>Насіння</h3>
-                    <p>Гібриди і сорти під ґрунт та клімат. Порадимо норму висіву і схеми живлення.</p>
-                </div>
-                <div class="products-grid" data-category="seeds"></div>
-            </section>
-
-            <section class="tab-panel" id="tab-fert" role="tabpanel" aria-labelledby="tabbtn-fert" hidden>
-                <div class="panel-info">
-                    <h3>Добрива</h3>
-                    <p>Мінеральні, органічні та мікродобрива. Плани живлення по фазах розвитку.</p>
-                </div>
-                <div class="products-grid" data-category="fert"></div>
-            </section>
-
-            <section class="tab-panel" id="tab-protect" role="tabpanel" aria-labelledby="tabbtn-protect" hidden>
-                <div class="panel-info">
-                    <h3>Засоби захисту</h3>
-                    <p>Схеми під культуру та шкідливий об’єкт. Гербіциди, фунгіциди, інсектициди.</p>
-                </div>
-                <div class="products-grid" data-category="protect"></div>
-            </section>
-
-            <section class="tab-panel" id="tab-covers" role="tabpanel" aria-labelledby="tabbtn-covers" hidden>
-                <div class="panel-info">
-                    <h3>Покривні матеріали</h3>
-                    <p>Агроволокно, плівка, агротканина. Захист від заморозків і бур’янів.</p>
-                </div>
-                <div class="products-grid" data-category="covers"></div>
-            </section>
-
-            <section class="tab-panel" id="tab-seedlings" role="tabpanel" aria-labelledby="tabbtn-seedlings" hidden>
-                <div class="panel-info">
-                    <h3>Саджанці</h3>
-                    <p>Добірні сорти з високою приживлюваністю. Рекомендації по посадці та догляду.</p>
-                </div>
-                <div class="products-grid" data-category="seedlings"></div>
-            </section>
-
-            <section class="tab-panel" id="tab-bulbs" role="tabpanel" aria-labelledby="tabbtn-bulbs" hidden>
-                <div class="panel-info">
-                    <h3>Цибулькові квіти</h3>
-                    <p>Тюльпани, лілії, гладіолуси та інші декоративні культури.</p>
-                </div>
-                <div class="products-grid" data-category="bulbs"></div>
-            </section>
-
-            <section class="tab-panel" id="tab-onionsets" role="tabpanel" aria-labelledby="tabbtn-onionsets" hidden>
-                <div class="panel-info">
-                    <h3>Цибуля-сівок</h3>
-                    <p>Ранні та середні строки достигання. Підбір по регіону.</p>
-                </div>
-                <div class="products-grid" data-category="onionsets"></div>
-            </section>
-
-            <section class="tab-panel" id="tab-myc" role="tabpanel" aria-labelledby="tabbtn-myc" hidden>
-                <div class="panel-info">
-                    <h3>Міцелій грибів</h3>
-                    <p>Вешенка, шиітаке та інші. Технологічні карти на запит.</p>
-                </div>
-                <div class="products-grid" data-category="myc"></div>
-            </section>
-        </section>
-        <!-- Product Modal -->
-        <div id="product-modal" class="modal" aria-hidden="true">
-            <div class="modal__backdrop" data-close></div>
-            <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title">
-                <button class="modal__close" type="button" aria-label="Закрити" data-close>&times;</button>
-
-                <div class="modal__media">
-                    <img id="pm-img" alt="">
-                </div>
-
-                <div class="modal__content">
-                    <h3 id="pm-title" class="modal__title"></h3>
-                    <div class="modal__meta">
-                        <span class="badge" id="pm-cat"></span>
-                        <span class="badge badge--sub" id="pm-sub" hidden></span>
-                        <span class="badge" id="pm-brand" hidden></span>
-                        <span class="price" id="pm-price"></span>
-                    </div>
-                    <p id="pm-desc"></p>
-                    <div class="modal__footer">
-                        <button class="btn" id="pm-add" type="button">Додати в кошик</button>
-                    </div>
-                </div>
-            </div>
+      <!-- Панелі контенту -->
+      <section class="tab-panel" id="tab-all" role="tabpanel" aria-labelledby="tabbtn-all">
+        <div class="panel-info">
+          <h3>Усі категорії</h3>
+          <p>Показуємо по 2 позиції з кожної категорії.</p>
         </div>
+        <div class="products-grid" data-category="all"></div>
+      </section>
 
-    </main>
+      <section class="tab-panel" id="tab-seeds" role="tabpanel" aria-labelledby="tabbtn-seeds" hidden>
+        <div class="panel-info">
+          <h3>Насіння</h3>
+          <p>Гібриди і сорти під ґрунт та клімат. Порадимо норму висіву і схеми живлення.</p>
+        </div>
+        <div class="products-grid" data-category="seeds"></div>
+      </section>
 
-    <div id="footer"></div>
+      <section class="tab-panel" id="tab-fert" role="tabpanel" aria-labelledby="tabbtn-fert" hidden>
+        <div class="panel-info">
+          <h3>Добрива</h3>
+          <p>Мінеральні, органічні та мікродобрива. Плани живлення по фазах розвитку.</p>
+        </div>
+        <div class="products-grid" data-category="fert"></div>
+      </section>
 
-    <script src="/agrotern/js/script.js"></script>
-    <script src="/agrotern/js/products.js"></script>
+      <section class="tab-panel" id="tab-protect" role="tabpanel" aria-labelledby="tabbtn-protect" hidden>
+        <div class="panel-info">
+          <h3>Засоби захисту</h3>
+          <p>Схеми під культуру та шкідливий об’єкт. Гербіциди, фунгіциди, інсектициди.</p>
+        </div>
+        <div class="products-grid" data-category="protect"></div>
+      </section>
+
+      <section class="tab-panel" id="tab-covers" role="tabpanel" aria-labelledby="tabbtn-covers" hidden>
+        <div class="panel-info">
+          <h3>Покривні матеріали</h3>
+          <p>Агроволокно, плівка, агротканина. Захист від заморозків і бур’янів.</p>
+        </div>
+        <div class="products-grid" data-category="covers"></div>
+      </section>
+
+      <section class="tab-panel" id="tab-seedlings" role="tabpanel" aria-labelledby="tabbtn-seedlings" hidden>
+        <div class="panel-info">
+          <h3>Саджанці</h3>
+          <p>Добірні сорти з високою приживлюваністю. Рекомендації по посадці та догляду.</p>
+        </div>
+        <div class="products-grid" data-category="seedlings"></div>
+      </section>
+
+      <section class="tab-panel" id="tab-bulbs" role="tabpanel" aria-labelledby="tabbtn-bulbs" hidden>
+        <div class="panel-info">
+          <h3>Цибулькові квіти</h3>
+          <p>Тюльпани, лілії, гладіолуси та інші декоративні культури.</p>
+        </div>
+        <div class="products-grid" data-category="bulbs"></div>
+      </section>
+
+      <section class="tab-panel" id="tab-onionsets" role="tabpanel" aria-labelledby="tabbtn-onionsets" hidden>
+        <div class="panel-info">
+          <h3>Цибуля-сівок</h3>
+          <p>Ранні та середні строки достигання. Підбір по регіону.</p>
+        </div>
+        <div class="products-grid" data-category="onionsets"></div>
+      </section>
+
+      <section class="tab-panel" id="tab-myc" role="tabpanel" aria-labelledby="tabbtn-myc" hidden>
+        <div class="panel-info">
+          <h3>Міцелій грибів</h3>
+          <p>Вешенка, шиітаке та інші. Технологічні карти на запит.</p>
+        </div>
+        <div class="products-grid" data-category="myc"></div>
+      </section>
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <!-- Backdrop + Modal -->
+  <div id="product-backdrop" class="modal-backdrop" data-close aria-hidden="true"></div>
+  <div id="product-modal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="pm-title">
+      <button class="modal-close" type="button" aria-label="Закрити" data-close>&times;</button>
+
+      <div class="m-head">
+        <img id="pm-img" alt="" />
+        <div>
+          <h3 id="pm-title"></h3>
+
+          <div class="modal-meta">
+            <span id="pm-price" class="m-price"></span>
+            <span id="pm-stock" class="stock"></span>
+          </div>
+
+          <div class="modal-meta">
+            <span class="m-badge" id="pm-cat"></span>
+            <span class="m-badge" id="pm-sub" hidden></span>
+            <span class="m-badge" id="pm-brand" hidden></span>
+          </div>
+
+          <p id="pm-desc" class="m-desc"></p>
+          <p id="pm-long" class="m-long"></p>
+
+          <div class="m-actions">
+            <div class="qty-wrap" aria-label="Кількість">
+              <button type="button" class="qty-btn" id="pm-minus" data-op="dec" aria-label="Менше">−</button>
+              <input type="number" id="pm-qty" class="qty-input" value="1" min="1" max="1" inputmode="numeric" />
+              <button type="button" class="qty-btn" id="pm-plus" data-op="inc" aria-label="Більше">+</button>
+            </div>
+            <button class="btn" id="pm-add" type="button">Додати в кошик</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script defer src="/agrotern/js/script.js"></script>
+  <script defer src="/agrotern/js/products.js"></script>
 </body>
-
 </html>
-

@@ -1,12 +1,13 @@
 (function () {
     const DATA_URL = '/agrotern/data/products.json';
+    const IMG_BASE = '/agrotern/img/';
+    const PLACEHOLDER = 'placeholder.png';
+
     const ALL_PER_CAT = 2;
     const PAGE_SIZE = 12;
 
-    // Кошик
     const CART_KEY = 'agro_cart_v1';
 
-    // Підкатегорії
     const SUBCATS = {
         seeds: [
             { key: 'peas', label: 'Горох' },
@@ -21,7 +22,6 @@
         fert: [], covers: [], seedlings: [], bulbs: [], onionsets: [], myc: []
     };
 
-    // Бренди
     const BRANDS = {
         seeds: [
             { key: 'semena-ukrainy', label: 'Семена України' },
@@ -33,7 +33,6 @@
     let cache = null;
     const state = { cat: 'all', subcat: '', brand: '' };
 
-    // UI елементи
     const tablist = document.querySelector('.tabs');
     const tabs = tablist ? Array.from(tablist.querySelectorAll('[role="tab"]')) : [];
     const panels = Array.from(document.querySelectorAll('.tab-panel'));
@@ -73,39 +72,55 @@
         const found = list.find(s => s.key === subKey);
         return found ? found.label : (subKey || '');
     }
+    const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     const safeDecode = s => { try { return JSON.parse(decodeURIComponent(s)); } catch { return null; } };
+    function resolveImg(name) {
+        if (!name) return IMG_BASE + PLACEHOLDER;
+        if (/^https?:\/\//i.test(name)) return name;
+        if (name.startsWith('/')) return name;
+        return IMG_BASE + name;
+    }
+    function clearNode(n) { if (!n) return; while (n.firstChild) n.removeChild(n.firstChild); }
 
     // ===== Картка товару
     function cardHTML(item) {
         const data = {
+            id: item.id || `${(item.category || '')}-${esc(item.title || '')}`,
             category: item.category,
             subcat: item.subcat || '',
             brand: item.brand || '',
-            title: item.title,
+            title: item.title || 'Без назви',
             price: item.price ?? null,
-            image: item.image || '/agrotern/img/placeholder.png',
+            image: resolveImg(item.image),
             desc: item.desc || '',
+            longDesc: item.longDesc || '',
+            stock: Number.isFinite(item.stock) ? item.stock : 0,
             width: item.width || 320,
             height: item.height || 240
         };
         const payload = encodeURIComponent(JSON.stringify(data));
+        const stockCls = data.stock > 0 ? 'in' : 'out';
+        const stockTxt = data.stock > 0 ? `В наявності: ${data.stock} шт` : 'Немає в наявності';
+
         return `
       <article class="product-card">
-        <img class="product-media" src="/agrotern${data.image}" alt="${data.title || 'Товар'}"
+        <img class="product-media" src="${data.image}" alt="${esc(data.title)}"
              loading="lazy" decoding="async" width="${data.width}" height="${data.height}">
         <div class="product-body">
           <div class="badge-row">
             ${data.category ? `<span class="badge">${labelByCat(data.category)}</span>` : ``}
             ${data.subcat ? `<span class="badge badge--sub">${labelBySubcat(data.category, data.subcat)}</span>` : ``}
-            ${data.brand ? `<span class="badge">${data.brand}</span>` : ``}
+            ${data.brand ? `<span class="badge">${esc(data.brand)}</span>` : ``}
           </div>
-          <h3 class="product-title">${data.title || 'Без назви'}</h3>
-          <p class="product-desc">${data.desc}</p>
+          <h3 class="product-title">${data.title}</h3>
           <div class="product-meta">
-            <div class="product-price">${data.price != null ? money(data.price) : ''}</div>
+            <div>
+              ${data.price != null ? `<div class="product-price">${money(data.price)}</div>` : ``}
+              <div class="product-stock ${stockCls}">${stockTxt}</div>
+            </div>
             <div class="product-cta">
               <button class="btn btn--secondary" type="button" data-action="info" data-item="${payload}">Деталі</button>
-              <button class="btn" type="button" data-action="add"  data-item="${payload}">Додати в кошик</button>
+              <button class="btn" type="button" data-action="add" data-item="${payload}" ${data.stock <= 0 ? 'disabled' : ''}>У кошик</button>
             </div>
           </div>
         </div>
@@ -113,40 +128,83 @@
     }
 
     // ===== Модалка
+    const backdropEl = document.getElementById('product-backdrop');
     const modalEl = document.getElementById('product-modal');
+
     const pmImg = document.getElementById('pm-img');
     const pmTitle = document.getElementById('pm-title');
     const pmDesc = document.getElementById('pm-desc');
+    const pmLong = document.getElementById('pm-long');
     const pmCat = document.getElementById('pm-cat');
     const pmSub = document.getElementById('pm-sub');
     const pmBrand = document.getElementById('pm-brand');
     const pmPrice = document.getElementById('pm-price');
     const pmAddBtn = document.getElementById('pm-add');
 
+    let qtyInput, decBtn, incBtn;
     let lastFocus = null;
     let currentItem = null;
 
+    function ensureQtyControls(max) {
+        if (!modalEl) return;
+        qtyInput = modalEl.querySelector('#pm-qty') || modalEl.querySelector('.qty-input');
+        decBtn = modalEl.querySelector('#pm-minus') || modalEl.querySelector('.qty-btn[data-op="dec"]');
+        incBtn = modalEl.querySelector('#pm-plus') || modalEl.querySelector('.qty-btn[data-op="inc"]');
+        if (!qtyInput || !decBtn || !incBtn) return;
+
+        const clamp = (v, m) => {
+            const maxV = Math.max(Number(m) || 0, 0);
+            if (maxV === 0) return 0;
+            v = Number.isFinite(+v) ? +v : 1;
+            return Math.min(Math.max(v, 1), maxV);
+        };
+        const sync = (m) => {
+            const v = +qtyInput.value || 0;
+            decBtn.disabled = v <= 1;
+            incBtn.disabled = v >= (Math.max(Number(m) || 0, 0));
+            if (pmAddBtn) pmAddBtn.disabled = (m <= 0) || v <= 0;
+        };
+
+        decBtn.onclick = () => { qtyInput.value = clamp((+qtyInput.value || 1) - 1, qtyInput.max); sync(qtyInput.max); };
+        incBtn.onclick = () => { qtyInput.value = clamp((+qtyInput.value || 1) + 1, qtyInput.max); sync(qtyInput.max); };
+        qtyInput.oninput = () => { qtyInput.value = clamp(qtyInput.value, qtyInput.max); sync(qtyInput.max); };
+
+        qtyInput.max = String(max);
+        qtyInput.value = max > 0 ? '1' : '0';
+        sync(qtyInput.max);
+    }
+
     function openModal(item) {
-        if (!modalEl) return; // якщо блоку немає — нічого не робимо
+        if (!modalEl) return;
         currentItem = item;
-        pmImg.src = item.image || '/agrotern/img/placeholder.png';
+
+        pmImg.src = item.image || (IMG_BASE + PLACEHOLDER);
         pmImg.alt = item.title || 'Товар';
         pmTitle.textContent = item.title || 'Товар';
-        pmDesc.textContent = item.longDesc || item.desc || '';
+        pmDesc.textContent = item.desc || '';
+        if (pmLong) pmLong.textContent = item.longDesc || '';
         pmCat.textContent = labelByCat(item.category);
         if (item.subcat) { pmSub.textContent = labelBySubcat(item.category, item.subcat); pmSub.hidden = false; } else pmSub.hidden = true;
         if (item.brand) { pmBrand.textContent = item.brand; pmBrand.hidden = false; } else pmBrand.hidden = true;
         pmPrice.textContent = item.price != null ? money(item.price) : 'за запитом';
 
+        const max = Math.max(Number(item.stock) || 0, 0);
+        ensureQtyControls(max);
+
         lastFocus = document.activeElement;
-        modalEl.classList.add('is-open');
+
+        if (backdropEl) { backdropEl.classList.add('open'); backdropEl.setAttribute('aria-hidden', 'false'); }
+        modalEl.classList.add('open', 'is-open');
         modalEl.setAttribute('aria-hidden', 'false');
-        if (pmAddBtn) pmAddBtn.focus();
         document.body.style.overflow = 'hidden';
+
+        if (pmAddBtn) pmAddBtn.focus();
     }
+
     function closeModal() {
+        if (backdropEl) { backdropEl.classList.remove('open'); backdropEl.setAttribute('aria-hidden', 'true'); }
         if (!modalEl) return;
-        modalEl.classList.remove('is-open');
+        modalEl.classList.remove('open', 'is-open');
         modalEl.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
         if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
@@ -154,35 +212,42 @@
     }
 
     if (modalEl) {
+        // Закриття по кнопці-хрестику
         modalEl.addEventListener('click', (e) => { if (e.target.matches('[data-close]')) closeModal(); });
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modalEl.classList.contains('is-open')) closeModal(); });
+        // Закриття по бекдропу
+        if (backdropEl) backdropEl.addEventListener('click', closeModal);
+        // ESC
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modalEl.classList.contains('open')) closeModal(); });
+
+        // Додати в кошик з модалки
         if (pmAddBtn) {
             pmAddBtn.addEventListener('click', () => {
                 if (!currentItem) return;
-                addToCart(currentItem);
-                pmAddBtn.textContent = 'Додано';
-                setTimeout(() => { pmAddBtn.textContent = 'Додати в кошик'; }, 1200);
+                const max = Math.max(Number(currentItem.stock) || 0, 0);
+                const q = Math.max(1, Math.min(+((modalEl.querySelector('#pm-qty') || modalEl.querySelector('.qty-input'))?.value || 1), max));
+                addToCart(currentItem, q);
+                closeModal();
             });
         }
     }
 
-    // ===== Клік-екшени карток (модалка + кошик)
+    // ===== Дії на картках
     function attachCardActions(scope) {
         scope.addEventListener('click', (e) => {
             const btn = e.target.closest('button[data-action]');
             if (!btn) return;
+            const item = safeDecode(btn.getAttribute('data-item'));
+            if (!item) return;
 
             if (btn.dataset.action === 'info') {
-                const item = safeDecode(btn.getAttribute('data-item'));
-                if (item) openModal(item);
+                openModal(item);
                 return;
             }
             if (btn.dataset.action === 'add') {
-                const item = safeDecode(btn.getAttribute('data-item'));
-                if (!item) return;
-                addToCart(item);
+                if (item.stock <= 0) return;
+                addToCart(item, 1);
                 btn.textContent = 'Додано';
-                setTimeout(() => { btn.textContent = 'Додати в кошик'; }, 1200);
+                setTimeout(() => { btn.textContent = 'У кошик'; }, 1200);
             }
         }, { once: false });
     }
@@ -195,12 +260,25 @@
         localStorage.setItem(CART_KEY, JSON.stringify(list));
         document.dispatchEvent(new Event('cart:changed'));
     }
-    function addToCart(item) {
+    function addToCart(item, qty = 1) {
         const cart = readCart();
         const key = (item.category || '') + '|' + (item.title || '');
         const found = cart.find(x => ((x.category || '') + '|' + (x.title || '')) === key);
-        if (found) found.qty = (found.qty || 1) + 1;
-        else cart.push({ ...item, qty: 1 });
+
+        const clean = {
+            title: item.title || 'Товар',
+            category: item.category || '',
+            brand: item.brand || '',
+            price: item.price ?? null,
+            image: item.image || (IMG_BASE + PLACEHOLDER)
+        };
+        const maxQty = Math.max(Number(item.stock) || Infinity, 0);
+
+        if (found) {
+            found.qty = Math.min((found.qty || 1) + qty, maxQty);
+        } else {
+            cart.push({ ...clean, qty: Math.min(qty, maxQty) });
+        }
         writeCart(cart);
     }
 
@@ -219,7 +297,7 @@
         push ? history.pushState(null, '', url) : history.replaceState(null, '', url);
     }
 
-    // ===== Підкатегорії
+    // ===== Підкатегорії / Бренди
     function renderSubcats(cat) {
         const list = SUBCATS[cat] || [];
         state.subcat = '';
@@ -236,10 +314,7 @@
             const optAll = document.createElement('option');
             optAll.value = ''; optAll.textContent = 'Усі підкатегорії';
             subSelect.appendChild(optAll);
-            list.forEach(sc => {
-                const o = document.createElement('option'); o.value = sc.key; o.textContent = sc.label;
-                subSelect.appendChild(o);
-            });
+            list.forEach(sc => { const o = document.createElement('option'); o.value = sc.key; o.textContent = sc.label; subSelect.appendChild(o); });
         }
 
         clearNode(subChipsBox);
@@ -252,11 +327,9 @@
                 subChipsBox.appendChild(b);
             });
         }
-
         renderBrands(cat);
     }
 
-    // ===== Бренди
     function renderBrands(cat) {
         const list = BRANDS[cat] || [];
         state.brand = '';
@@ -272,10 +345,7 @@
             const optAll = document.createElement('option');
             optAll.value = ''; optAll.textContent = 'Усі виробники';
             brandSelect.appendChild(optAll);
-            list.forEach(br => {
-                const o = document.createElement('option'); o.value = br.key; o.textContent = br.label;
-                brandSelect.appendChild(o);
-            });
+            list.forEach(br => { const o = document.createElement('option'); o.value = br.key; o.textContent = br.label; brandSelect.appendChild(o); });
         }
 
         clearNode(brandChips);
@@ -289,8 +359,6 @@
             });
         }
     }
-
-    function clearNode(n) { if (!n) return; while (n.firstChild) n.removeChild(n.firstChild); }
 
     // ===== Рендер товарів
     async function renderPanel(panel, catKey) {
@@ -322,7 +390,7 @@
         attachCardActions(grid);
     }
 
-    // ===== Активувати категорію/фільтри
+    // ===== Активні стани
     function setActiveCategory(cat) {
         state.cat = cat;
         if (tabs.length) tabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.category === cat)));
@@ -400,7 +468,5 @@
     }
 
     window.addEventListener('popstate', applyFromParams);
-
-    // Старт
     applyFromParams();
 })();

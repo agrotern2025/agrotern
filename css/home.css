@@ -1,0 +1,34 @@
+/* Категорійний слайдер (mobile-first) */
+.cat-slider{position:relative}
+.cat-slider__viewport{
+  overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+  padding:.5rem .75rem
+}
+.cat-slider__track{
+  display:grid;grid-auto-flow:column;grid-auto-columns:85%;gap:1rem
+}
+.cat-slide{scroll-snap-align:start}
+
+/* Навігація */
+.cat-slider__nav{position:absolute;inset:0;pointer-events:none}
+.cat-slider__btn{
+  position:absolute;top:50%;transform:translateY(-50%);pointer-events:auto;
+  border:1px solid var(--muted);background:#fff;border-radius:999px;width:38px;height:38px;
+  display:grid;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.08);cursor:pointer;
+  transition:background .15s ease, opacity .15s ease
+}
+.cat-slider__btn:hover{background:#f6f8f9}
+.cat-slider__btn[disabled]{opacity:.4;cursor:default}
+.cat-slider__btn--prev{left:.25rem}
+.cat-slider__btn--next{right:.25rem}
+
+/* Більше карток на ширших екранах */
+@media (min-width:576px){.cat-slider__track{grid-auto-columns:60%}}
+@media (min-width:768px){.cat-slider__track{grid-auto-columns:45%}}
+@media (min-width:992px){.cat-slider__track{grid-auto-columns:32%}}
+@media (min-width:1200px){.cat-slider__track{grid-auto-columns:24%}}
+
+/* Менше руху, якщо так налаштовано в ОС */
+@media (prefers-reduced-motion: reduce){
+  .cat-slider__viewport,.cat-slider__btn{scroll-behavior:auto;transition:none}
+}

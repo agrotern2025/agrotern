@@ -163,3 +163,25 @@ function updateCartBadge() {
 window.addEventListener('storage', (e) => { if (e.key === CART_KEY) updateCartBadge(); });
 document.addEventListener('cart:changed', updateCartBadge);
 
+(function setupStickyHeader() {
+    function init() {
+        const header = document.querySelector('.site-header');
+        if (!header) return;
+
+        const setH = () => {
+            document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+        };
+        const onScroll = () => {
+            if (window.scrollY > 2) header.classList.add('is-stuck');
+            else header.classList.remove('is-stuck');
+        };
+
+        setH(); onScroll();
+        window.addEventListener('resize', setH);
+        window.addEventListener('scroll', onScroll, { passive: true });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else { init(); }
+})();

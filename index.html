@@ -9,93 +9,8 @@
         content="AgroTern: перевірені рішення для домогосподарств і малих господарств — насіння, добрива, засоби захисту, покривні матеріали. Консультації агронома.">
     <link rel="canonical" href="https://agrotern2025.github.io/agrotern/">
     <link rel="stylesheet" href="/agrotern/style.css">
+    <link rel="stylesheet" href="/agrotern/css/home.css">
     <link rel="icon" type="image/png" href="/agrotern/img/loader.png">
-
-    <!-- Локальні стилі слайдера (можна перенести в style.css) -->
-    <style>
-        .cat-slider {
-            position: relative;
-        }
-
-        .cat-slider__viewport {
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            padding: .5rem .75rem;
-        }
-
-        .cat-slider__track {
-            display: grid;
-            grid-auto-flow: column;
-            grid-auto-columns: 85%;
-            gap: 1rem;
-        }
-
-        .cat-slide {
-            scroll-snap-align: start;
-        }
-
-        /* кнопки */
-        .cat-slider__nav {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
-
-        .cat-slider__btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            pointer-events: auto;
-            border: 1px solid var(--muted);
-            background: #fff;
-            border-radius: 999px;
-            width: 38px;
-            height: 38px;
-            display: grid;
-            place-items: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
-            cursor: pointer;
-        }
-
-        .cat-slider__btn[disabled] {
-            opacity: .4;
-            cursor: default;
-        }
-
-        .cat-slider__btn--prev {
-            left: .25rem;
-        }
-
-        .cat-slider__btn--next {
-            right: .25rem;
-        }
-
-        /* ширші екрани показують більше карток */
-        @media (min-width: 576px) {
-            .cat-slider__track {
-                grid-auto-columns: 60%;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .cat-slider__track {
-                grid-auto-columns: 45%;
-            }
-        }
-
-        @media (min-width: 992px) {
-            .cat-slider__track {
-                grid-auto-columns: 32%;
-            }
-        }
-
-        @media (min-width:1200px) {
-            .cat-slider__track {
-                grid-auto-columns: 24%;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -103,9 +18,10 @@
 
     <main id="main-content">
         <figure class="hero">
-            <img class="featured-image" src="/agrotern/img/banner.png" srcset="/agrotern/img/banner.png 1200w, /agrotern/img/banner.png 2400w"
-                sizes="100vw" alt="Сезонні пропозиції для домогосподарств і фермерів" width="1200" height="500"
-                decoding="async" fetchpriority="high">
+            <img class="featured-image" src="/agrotern/img/banner.png"
+                srcset="/agrotern/img/banner.png 1200w, /agrotern/img/banner.png 2400w" sizes="100vw"
+                alt="Сезонні пропозиції для домогосподарств і фермерів" width="1200" height="500" decoding="async"
+                fetchpriority="high">
             <figcaption class="visually-hidden">Підбір рішень під вашу ділянку та культури</figcaption>
         </figure>
 
@@ -131,21 +47,21 @@
 
             <!-- Слайдер категорій -->
             <div class="cat-slider" role="region" aria-label="Категорії">
-                <div class="cat-slider__viewport" id="catsViewport" tabindex="0" aria-roledescription="carousel">
+                <div class="cat-slider__viewport" id="catsViewport" tabindex="0" aria-roledescription="carousel"
+                    aria-label="Список категорій">
                     <div class="cat-slider__track" id="catsTrack">
-                        <!-- 1 -->
                         <a class="cat-slide" href="/agrotern/page/products.html?cat=seeds"
                             aria-label="Перейти до категорії Насіння">
                             <figure class="category-item">
-                                <img src="/agrotern/img/seeds.png" alt="Насіння овочевих і польових культур" loading="lazy"
-                                    decoding="async" width="320" height="200">
+                                <img src="/agrotern/img/seeds.png" alt="Насіння овочевих і польових культур"
+                                    loading="lazy" decoding="async" width="320" height="200">
                                 <h3>Насіння</h3>
                                 <figcaption>
                                     <p>Високоврожайні сорти та гібриди</p>
                                 </figcaption>
                             </figure>
                         </a>
-                        <!-- 2 -->
+
                         <a class="cat-slide" href="/agrotern/page/products.html?cat=fert"
                             aria-label="Перейти до категорії Добрива">
                             <figure class="category-item">
@@ -157,19 +73,19 @@
                                 </figcaption>
                             </figure>
                         </a>
-                        <!-- 3 -->
+
                         <a class="cat-slide" href="/agrotern/page/products.html?cat=protect"
                             aria-label="Перейти до категорії Засоби захисту">
                             <figure class="category-item">
-                                <img src="/agrotern/img/saves.png" alt="Засоби захисту рослин" loading="lazy" decoding="async"
-                                    width="320" height="200">
+                                <img src="/agrotern/img/saves.png" alt="Засоби захисту рослин" loading="lazy"
+                                    decoding="async" width="320" height="200">
                                 <h3>Засоби захисту</h3>
                                 <figcaption>
                                     <p>Гербіциди, фунгіциди, інсектициди</p>
                                 </figcaption>
                             </figure>
                         </a>
-                        <!-- 4 -->
+
                         <a class="cat-slide" href="/agrotern/page/products.html?cat=covers"
                             aria-label="Перейти до категорії Покривні матеріали">
                             <figure class="category-item">
@@ -181,19 +97,19 @@
                                 </figcaption>
                             </figure>
                         </a>
-                        <!-- 5 -->
+
                         <a class="cat-slide" href="/agrotern/page/products.html?cat=seedlings"
                             aria-label="Перейти до категорії Саджанці">
                             <figure class="category-item">
-                                <img src="/agrotern/img/material.png" alt="Саджанці плодових і ягідних культур" loading="lazy"
-                                    decoding="async" width="320" height="200">
+                                <img src="/agrotern/img/material.png" alt="Саджанці плодових і ягідних культур"
+                                    loading="lazy" decoding="async" width="320" height="200">
                                 <h3>Саджанці</h3>
                                 <figcaption>
                                     <p>Добірні сорти з гарною приживлюваністю</p>
                                 </figcaption>
                             </figure>
                         </a>
-                        <!-- 6 -->
+
                         <a class="cat-slide" href="/agrotern/page/products.html?cat=bulbs"
                             aria-label="Перейти до категорії Цибулькові квіти">
                             <figure class="category-item">
@@ -205,7 +121,7 @@
                                 </figcaption>
                             </figure>
                         </a>
-                        <!-- 7 -->
+
                         <a class="cat-slide" href="/agrotern/page/products.html?cat=onionsets"
                             aria-label="Перейти до категорії Цибуля-сівок">
                             <figure class="category-item">
@@ -217,12 +133,12 @@
                                 </figcaption>
                             </figure>
                         </a>
-                        <!-- 8 -->
+
                         <a class="cat-slide" href="/agrotern/page/products.html?cat=myc"
                             aria-label="Перейти до категорії Міцелій грибів">
                             <figure class="category-item">
-                                <img src="/agrotern/img/material.png" alt="Міцелій грибів для вирощування" loading="lazy"
-                                    decoding="async" width="320" height="200">
+                                <img src="/agrotern/img/material.png" alt="Міцелій грибів для вирощування"
+                                    loading="lazy" decoding="async" width="320" height="200">
                                 <h3>Міцелій грибів</h3>
                                 <figcaption>
                                     <p>Вешенка, шиітаке та інші</p>
@@ -234,9 +150,9 @@
 
                 <div class="cat-slider__nav" aria-hidden="true">
                     <button class="cat-slider__btn cat-slider__btn--prev" type="button" id="catsPrev"
-                        aria-label="Попередня категорія">‹</button>
+                        aria-controls="catsViewport" aria-label="Попередня категорія">‹</button>
                     <button class="cat-slider__btn cat-slider__btn--next" type="button" id="catsNext"
-                        aria-label="Наступна категорія">›</button>
+                        aria-controls="catsViewport" aria-label="Наступна категорія">›</button>
                 </div>
             </div>
         </section>
@@ -263,44 +179,7 @@
     <div id="footer"></div>
 
     <script defer src="/agrotern/js/script.js"></script>
-
-    <!-- Нативний JS для слайдера -->
-    <script>
-        (function () {
-            const vp = document.getElementById('catsViewport');
-            const prev = document.getElementById('catsPrev');
-            const next = document.getElementById('catsNext');
-
-            if (!vp || !prev || !next) return;
-
-            const scrollByPage = (dir) => {
-                const step = vp.clientWidth * 0.95; // майже ширина вікна
-                vp.scrollBy({ left: dir * step, behavior: 'smooth' });
-            };
-
-            function updateButtons() {
-                // невеликий допуск
-                const atStart = vp.scrollLeft <= 2;
-                const atEnd = vp.scrollLeft + vp.clientWidth >= vp.scrollWidth - 2;
-                prev.disabled = atStart;
-                next.disabled = atEnd;
-            }
-
-            prev.addEventListener('click', () => scrollByPage(-1));
-            next.addEventListener('click', () => scrollByPage(1));
-            vp.addEventListener('scroll', updateButtons, { passive: true });
-            window.addEventListener('resize', updateButtons);
-
-            // Клавіші ← →
-            vp.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowRight') { e.preventDefault(); scrollByPage(1); }
-                if (e.key === 'ArrowLeft') { e.preventDefault(); scrollByPage(-1); }
-            });
-
-            // стартовий стан
-            updateButtons();
-        })();
-    </script>
+    <script defer src="/agrotern/js/home.js"></script>
 
     <script type="application/ld+json">
     {
@@ -318,5 +197,3 @@
 </body>
 
 </html>
-
-

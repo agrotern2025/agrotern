@@ -7,64 +7,70 @@
                 "desc": "Ранній гібрид, щільні головки 1.5–2.5 кг.",
                 "longDesc": "Пластичний гібрид для весняного та літнього обороту. Стійкий до розтріскування.",
                 "price": 95,
-                "image": "/img/seeds.png",
+                "image": "seeds.png",
                 "width": 320,
                 "height": 240,
-                "brand": "semena-ukrainy"
+                "brand": "semena-ukrainy",
+                "stock": 34
             },
             {
                 "category": "seeds",
                 "title": "Морква Нантська",
                 "desc": "Солодка, вирівняний коренеплід, зберігання до 6 міс.",
                 "price": 55,
-                "image": "/img/seeds.png",
+                "image": "seeds.png",
                 "width": 320,
                 "height": 240,
                 "subcat": "carrots",
-                "brand": "yaskrava"
+                "brand": "yaskrava",
+                "stock": 34
             },
             {
                 "category": "seeds",
                 "title": "Огірок партенокарпічний F1",
                 "desc": "Пучкове плодоношення, без гіркоти.",
                 "price": 110,
-                "image": "/img/seeds.png",
+                "image": "seeds.png",
                 "width": 320,
                 "height": 240,
                 "subcat": "cucumbers",
-                "brand": "profi"
+                "brand": "profi",
+                "stock": 0
             },
             {
                 "category": "seeds",
                 "title": "Томат сливовидний F1",
                 "desc": "Щільний, транспортабельний, для переробки.",
                 "price": 85,
-                "image": "/img/seeds.png",
+                "image": "seeds.png",
                 "width": 320,
                 "height": 240,
-                "brand": "yaskrava"
+                "brand": "yaskrava",
+                "stock": 3
             },
             {
                 "category": "seeds",
                 "title": "Горох цукровий",
                 "desc": "Солодкі стручки, ранній збір.",
                 "price": 49,
-                "image": "/img/seeds.png",
+                "image": "seeds.png",
                 "width": 320,
                 "height": 240,
                 "subcat": "peas",
-                "brand": "semena-ukrainy"
+                "brand": "semena-ukrainy",
+                "stock": 34
             },
             {
                 "category": "seeds",
                 "title": "Морква Шантане",
                 "desc": "Короткий конічний коренеплід, високий вміст цукрів.",
                 "price": 58,
-                "image": "/img/seeds.png",
+                "image": "seeds.png",
                 "width": 320,
                 "height": 240,
                 "subcat": "carrots",
-                "brand": "profi"
+                "brand": "profi",
+                "stock": 0
             }
         ],
         "fert": [
@@ -73,54 +79,60 @@
                 "title": "NPK 16-16-16",
                 "desc": "Універсальне стартове добриво.",
                 "price": 780,
-                "image": "/img/d.png",
+                "image": "d.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             },
             {
                 "category": "fert",
                 "title": "Карбамід (сечовина)",
                 "desc": "46% азоту, швидка дія.",
                 "price": 720,
-                "image": "/img/d.png",
+                "image": "d.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 4
             },
             {
                 "category": "fert",
                 "title": "Сульфат калію",
                 "desc": "Безхлорна форма для ягід і овочів.",
                 "price": 690,
-                "image": "/img/d.png",
+                "image": "d.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 0
             },
             {
                 "category": "fert",
                 "title": "Мікродобриво з цинком",
                 "desc": "Листкове підживлення, хелати.",
                 "price": 240,
-                "image": "/img/d.png",
+                "image": "d.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             },
             {
                 "category": "fert",
                 "title": "Суперфосфат гранульований",
                 "desc": "Джерело доступного фосфору.",
                 "price": 430,
-                "image": "/img/d.png",
+                "image": "d.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             },
             {
                 "category": "fert",
                 "title": "Кальцій нітрат",
                 "desc": "Профілактика вершинної гнилі, зміцнює стінки клітин.",
                 "price": 510,
-                "image": "/img/d.png",
+                "image": "d.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             }
         ],
         "protect": [
@@ -129,59 +141,65 @@
                 "title": "Гербіцид для злакових",
                 "desc": "Системна дія проти однорічних бур’янів.",
                 "price": 520,
-                "image": "/img/saves.png",
+                "image": "saves.png",
                 "width": 320,
                 "height": 240,
-                "subcat": "herbicides"
+                "subcat": "herbicides",
+                "stock": 34
             },
             {
                 "category": "protect",
                 "title": "Фунгіцид контактний",
                 "desc": "Профілактика плямистостей і гнилей.",
                 "price": 480,
-                "image": "/img/saves.png",
+                "image": "saves.png",
                 "width": 320,
                 "height": 240,
-                "subcat": "fungicides"
+                "subcat": "fungicides",
+                "stock": 3
             },
             {
                 "category": "protect",
                 "title": "Інсектицид системний",
                 "desc": "Проти сисних та листогризучих шкідників.",
                 "price": 450,
-                "image": "/img/saves.png",
+                "image": "saves.png",
                 "width": 320,
                 "height": 240,
-                "subcat": "insecticides"
+                "subcat": "insecticides",
+                "stock": 3
             },
             {
                 "category": "protect",
                 "title": "Протруйник насіння",
                 "desc": "Захист на старті вегетації.",
                 "price": 410,
-                "image": "/img/saves.png",
+                "image": "saves.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 4
             },
             {
                 "category": "protect",
                 "title": "Гербіцид ґрунтовий",
                 "desc": "Контроль бур’янів на ранніх стадіях.",
                 "price": 560,
-                "image": "/img/saves.png",
+                "image": "saves.png",
                 "width": 320,
                 "height": 240,
-                "subcat": "herbicides"
+                "subcat": "herbicides",
+                "stock": 0
             },
             {
                 "category": "protect",
                 "title": "Фунгіцид системний",
                 "desc": "Лікувальна та профілактична дія.",
                 "price": 590,
-                "image": "/img/saves.png",
+                "image": "saves.png",
                 "width": 320,
                 "height": 240,
-                "subcat": "fungicides"
+                "subcat": "fungicides",
+                "stock": 34
             }
         ],
         "covers": [
@@ -190,54 +208,60 @@
                 "title": "Агроволокно 17 г/м²",
                 "desc": "Весняний захист розсади.",
                 "price": 320,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             },
             {
                 "category": "covers",
                 "title": "Агроволокно 30 г/м²",
                 "desc": "Укриття та мульчування.",
                 "price": 390,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             },
             {
                 "category": "covers",
                 "title": "Плівка теплична 100 мкм",
                 "desc": "Стабілізована, прозора.",
                 "price": 860,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 0
             },
             {
                 "category": "covers",
                 "title": "Агротканина 90 г/м²",
                 "desc": "Проти бур’янів, УФ-стабілізація.",
                 "price": 1240,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 0
             },
             {
                 "category": "covers",
                 "title": "Плівка армована",
                 "desc": "Підвищена міцність, багаторічне використання.",
                 "price": 1120,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             },
             {
                 "category": "covers",
                 "title": "Агроволокно чорне 50 г/м²",
                 "desc": "Мульчування ґрунту, пригнічення бур’янів.",
                 "price": 690,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 3
             }
         ],
         "seedlings": [
@@ -246,54 +270,60 @@
                 "title": "Саджанець яблуні 'Гала'",
                 "desc": "Середній термін дозрівання, десертний смак.",
                 "price": 210,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 3
             },
             {
                 "category": "seedlings",
                 "title": "Саджанець смородини чорної",
                 "desc": "Великі ягоди, зимостійкість.",
                 "price": 120,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 3
             },
             {
                 "category": "seedlings",
                 "title": "Саджанець малини ремонтантної",
                 "desc": "Тривале плодоношення.",
                 "price": 130,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             },
             {
                 "category": "seedlings",
                 "title": "Саджанець черешні",
                 "desc": "Великоплідна, транспортабельна.",
                 "price": 260,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 4
             },
             {
                 "category": "seedlings",
                 "title": "Саджанець груші 'Конференція'",
                 "desc": "Стабільний урожай, соковиті плоди.",
                 "price": 240,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 4
             },
             {
                 "category": "seedlings",
                 "title": "Саджанець винограду столового",
                 "desc": "Великі грона, висока цукристість.",
                 "price": 190,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 4
             }
         ],
         "bulbs": [
@@ -302,54 +332,60 @@
                 "title": "Тюльпан мікс 10 шт",
                 "desc": "Різні кольори, класика весни.",
                 "price": 180,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 0
             },
             {
                 "category": "bulbs",
                 "title": "Лілія азіатська 3 шт",
                 "desc": "Яскраві суцвіття, невибаглива.",
                 "price": 160,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 0
             },
             {
                 "category": "bulbs",
                 "title": "Гладіолуси 10 шт",
                 "desc": "Високі стріли, зрізка.",
                 "price": 150,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 0
             },
             {
                 "category": "bulbs",
                 "title": "Нарцис мікс 8 шт",
                 "desc": "Ранні весняні квіти.",
                 "price": 140,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 0
             },
             {
                 "category": "bulbs",
                 "title": "Ірис бородатий 3 шт",
                 "desc": "Декоративні квіти з виразною формою.",
                 "price": 170,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 0
             },
             {
                 "category": "bulbs",
                 "title": "Крокус мікс 15 шт",
                 "desc": "Дуже раннє цвітіння.",
                 "price": 120,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             }
         ],
         "onionsets": [
@@ -358,54 +394,60 @@
                 "title": "Цибуля-сівок 'Штутгартер'",
                 "desc": "Рання, гостра, добре зберігається.",
                 "price": 95,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             },
             {
                 "category": "onionsets",
                 "title": "Цибуля-сівок 'Центаур'",
                 "desc": "Середньостигла, кругла цибулина.",
                 "price": 98,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             },
             {
                 "category": "onionsets",
                 "title": "Цибуля-сівок червона",
                 "desc": "Салатного типу, соковита.",
                 "price": 105,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             },
             {
                 "category": "onionsets",
                 "title": "Цибуля-сівок жовта",
                 "desc": "Класична, універсальна.",
                 "price": 90,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             },
             {
                 "category": "onionsets",
                 "title": "Цибуля-сівок біла",
                 "desc": "Ніжний смак, для свіжих салатів.",
                 "price": 108,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             },
             {
                 "category": "onionsets",
                 "title": "Цибуля-сівок шалот",
                 "desc": "Ароматна, дрібноцибулинна.",
                 "price": 115,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             }
         ],
         "myc": [
@@ -414,54 +456,60 @@
                 "title": "Міцелій вешенки",
                 "desc": "Для багетів і блоків, стабільний урожай.",
                 "price": 180,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             },
             {
                 "category": "myc",
                 "title": "Міцелій шиітаке",
                 "desc": "Для вирощування на колодах/брикетах.",
                 "price": 240,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             },
             {
                 "category": "myc",
                 "title": "Міцелій печериці",
                 "desc": "Класика для підвалів і теплиць.",
                 "price": 190,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             },
             {
                 "category": "myc",
                 "title": "Міцелій ерінгі",
                 "desc": "Королівський гриб, щільна структура.",
                 "price": 260,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             },
             {
                 "category": "myc",
                 "title": "Міцелій рейші",
                 "desc": "Лікарський гриб, тривале плодоношення.",
                 "price": 310,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             },
             {
                 "category": "myc",
                 "title": "Міцелій фламуліна",
                 "desc": "Енокі, компактні ніжки, щільні капелюшки.",
                 "price": 275,
-                "image": "/img/material.png",
+                "image": "material.png",
                 "width": 320,
-                "height": 240
+                "height": 240,
+                "stock": 34
             }
         ]
     }

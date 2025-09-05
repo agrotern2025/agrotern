@@ -1,0 +1,181 @@
+/* Локальні стилі кошика (mobile-first) */
+.cart-wrap {
+  padding: .75rem;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .75rem;
+}
+
+.cart-empty {
+  padding: 1rem;
+  text-align: center;
+  color: #555;
+}
+
+.cart-items {
+  display: grid;
+  gap: .75rem;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: .75rem;
+  align-items: center;
+  border: 1px solid var(--muted);
+  border-radius: 10px;
+  background: #fff;
+  padding: .5rem;
+  transition: box-shadow .2s ease, transform .2s ease;
+  will-change: transform;
+}
+
+@media (hover:hover) {
+  .cart-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  }
+}
+
+.cart-img {
+  width: 72px;
+  height: 72px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.ci-title {
+  font-weight: 600;
+  margin: 0 0 .25rem 0;
+}
+
+.ci-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  align-items: center;
+}
+
+.price {
+  font-weight: 700;
+}
+
+.ci-qty {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+.ci-qty input {
+  width: 56px;
+  padding: .35rem .5rem;
+  border: 1px solid var(--muted);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+}
+
+/* акцент фокусу на інпуті кількості */
+.ci-qty input:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--brand) 60%, black 0%);
+  outline-offset: 2px;
+}
+
+/* Firefox */
+.ci-qty input[type="number"] {
+  -moz-appearance: textfield;
+}
+/* WebKit спінери */
+.ci-qty input::-webkit-outer-spin-button,
+.ci-qty input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.ci-actions {
+  margin-left: auto;
+  display: flex;
+  gap: .5rem;
+}
+
+.subtotal {
+  margin-left: auto;
+  font-weight: 700;
+}
+
+.cart-summary {
+  margin-top: 1rem;
+  border-top: 1px solid var(--muted);
+  padding-top: .75rem;
+  display: grid;
+  gap: .5rem;
+  background: #fff;
+  border: 1px solid var(--muted);
+  border-radius: 10px;
+  padding: .75rem;
+}
+
+.sum-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sum-total {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+@media (min-width:768px) {
+  .cart-wrap {
+    padding: 1rem;
+  }
+
+  .cart-item {
+    grid-template-columns: 96px 1fr auto;
+  }
+
+  .cart-img {
+    width: 96px;
+    height: 96px;
+  }
+
+  .ci-qty input {
+    width: 72px;
+  }
+}
+
+/* Кнопка 'видалити все' */
+.btn-danger {
+  background: #dc3545;
+  color: #fff;
+  border-color: transparent;
+}
+.btn-danger:hover,
+.btn-danger:focus-visible {
+  background: #b02a37;
+}
+
+/* Бейдж категорії */
+.badge {
+  display: inline-block;
+  background: #e8f6ee;
+  color: var(--brand);
+  border: 1px solid var(--brand);
+  border-radius: 999px;
+  padding: .15rem .5rem;
+  font-size: .8rem;
+}
+
+/* Менше руху — менше анімацій */
+@media (prefers-reduced-motion: reduce) {
+  .cart-item {
+    transition: none;
+  }
+}
